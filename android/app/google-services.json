@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "336519547973",
+    "project_id": "mood-planner",
+    "storage_bucket": "mood-planner.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:336519547973:android:e698a59d6c72030a25e72c",
+        "android_client_info": {
+          "package_name": "com.example.flutter_w10_3th_final2_moodplanner"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdVWGG0JmmdrdBzaXr0-M2cIas2AyWo4s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
