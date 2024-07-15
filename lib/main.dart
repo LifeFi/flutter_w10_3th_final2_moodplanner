@@ -31,12 +31,17 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      routerConfig: ref.watch(routerProvider),
       title: 'Mood Planner',
+      routerConfig: ref.watch(routerProvider),
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        scaffoldBackgroundColor: Colors.white,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white,
+        ),
+        highlightColor: Colors.green.shade300,
       ),
     );
   }

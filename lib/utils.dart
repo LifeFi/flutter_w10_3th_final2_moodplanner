@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 String getImage() {
   final random = Random();
@@ -13,19 +12,33 @@ String imageUrl(String imagePath, {bool isCached = false}) {
   return "https://firebasestorage.googleapis.com/v0/b/flutter_w10_3th_final2.appspot.com/o/${imagePath.replaceAll("/", "%2F")}?alt=media&haha=${isCached ? DateTime.now().toString() : ""}";
 }
 
-String diffTimeString(DateTime dateTime) {
+String diffTimeString({required DateTime dateTime, bool isLong = false}) {
   final curTime = DateTime.now();
   final diffMSec =
       curTime.millisecondsSinceEpoch - dateTime.millisecondsSinceEpoch;
   String result;
-  if (diffMSec < 60 * 60 * 1000) {
-    result = "${(diffMSec / (60 * 1000)).round()}m";
+
+  if (diffMSec < 60 * 1000) {
+    result = "Just now";
+  } else if (diffMSec < 60 * 60 * 1000) {
+    result =
+        "${(diffMSec / (60 * 1000)).round()}${isLong ? " minutes ago" : "m"}";
   } else if (diffMSec < 24 * 60 * 60 * 1000) {
-    result = "${(diffMSec / (60 * 60 * 1000)).round()}h";
+    result =
+        "${(diffMSec / (60 * 60 * 1000)).round()}${isLong ? " hours ago" : "h"}";
   } else {
-    result = "${(diffMSec / (24 * 60 * 60 * 1000)).round()}d";
+    result =
+        "${(diffMSec / (24 * 60 * 60 * 1000)).round()}${isLong ? " days ago" : "d"}";
   }
   return result;
+}
+
+String dateTimeFormat(DateTime dateTime) {
+  return "${dateTime.month}월 ${dateTime.day}일 ${dateTime.hour.toString().padLeft(2, '0')}:${dateTime.minute.toString().padLeft(2, '0')}";
+}
+
+String dateFormat(DateTime dateTime) {
+  return "${dateTime.year}월 ${dateTime.month}월 ${dateTime.day}일";
 }
 
 String shortNumberFormat(int number) {
